@@ -8,6 +8,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 export default class App extends Component {
   state = {
     searchTerm: '',
+    page: 1,
   };
 
   handleSearchSubmit = searchTerm => this.setState({ searchTerm });

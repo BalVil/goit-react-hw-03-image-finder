@@ -29,9 +29,7 @@ export default class ImageGallery extends Component {
     console.log(this.state.imageHits);
     const { imageHits } = this.state;
     return (
-      <Gallery>
-        {imageHits && <ImageGalleryItem imageHits={imageHits} />}
-      </Gallery>
+      <Gallery>{imageHits && <ImageGalleryItem images={imageHits} />}</Gallery>
     );
   }
 }

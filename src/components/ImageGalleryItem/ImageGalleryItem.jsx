@@ -1,8 +1,8 @@
 import { GalleryItem, Image } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 
-const ImageGalleryItem = ({ imageHits }) => {
-  return imageHits.map(({ id, webformatURL, largeImageURL, tags }) => (
+const ImageGalleryItem = ({ images }) => {
+  return images.map(({ id, webformatURL, largeImageURL, tags }) => (
     <GalleryItem key={id}>
       <Image src={webformatURL} alt={tags} />
     </GalleryItem>

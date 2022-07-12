@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BsSearch } from 'react-icons/bs';
 
 export const Wrap = styled.header`
   top: 0;
@@ -32,7 +33,6 @@ export const FormBtn = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/OOjs_UI_icon_search-ltr.svg');
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -45,6 +45,11 @@ export const FormBtn = styled.button`
     opacity: 1;
   }
 `;
+export const IconBtn = styled(BsSearch)`
+  width: 16px;
+  height: 16px;
+`;
+
 export const FormLabel = styled.span`
   position: absolute;
   width: 1px;

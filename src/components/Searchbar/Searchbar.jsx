@@ -10,25 +10,28 @@ import {
 
 export default class Searchbar extends Component {
   state = {
-    searchTerm: '',
+    searchName: '',
   };
 
   handleNameChange = e =>
-    this.setState({ searchTerm: e.currentTarget.value.toLowerCase() });
+    this.setState({ searchName: e.currentTarget.value.toLowerCase() });
 
   handleSubmit = e => {
+    const { searchName } = this.state;
     e.preventDefault();
 
-    if (this.state.searchTerm.trim() === '') {
+    if (searchName.trim() === '') {
       // додати Notiflix чи react-toastify
       return alert('Enter at least one pokemon');
     }
 
-    this.props.onSubmit(this.state.searchTerm);
-    this.setState({ searchTerm: '' });
+    this.props.onSubmit(searchName);
+    this.setState({ searchName: '' });
   };
 
   render() {
+    const { searchName } = this.state;
+
     return (
       <Wrap>
         <Form onSubmit={this.handleSubmit}>
@@ -37,7 +40,7 @@ export default class Searchbar extends Component {
             <FormLabel />
           </FormBtn>
           <FormInput
-            value={this.state.searchTerm}
+            value={searchName}
             onChange={this.handleNameChange}
             type="text"
             name="searchQuery"

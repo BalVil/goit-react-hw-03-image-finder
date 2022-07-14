@@ -7,18 +7,30 @@ import ImageGallery from './ImageGallery/ImageGallery';
 
 export default class App extends Component {
   state = {
-    searchTerm: '',
+    searchName: '',
     page: 1,
   };
 
-  handleSearchSubmit = searchTerm => this.setState({ searchTerm });
+  formSubmit = data => {
+    this.setState({ searchName: data, page: 1 });
+  };
+
+  handleMoreImage = () =>
+    this.setState(prev => ({
+      page: prev.page + 1,
+    }));
 
   render() {
-    const { searchTerm } = this.state;
+    const { searchName, page } = this.state;
+
     return (
       <Wrapper>
-        <Searchbar onSubmit={this.handleSearchSubmit} />
-        <ImageGallery searchTerm={searchTerm} />
+        <Searchbar onSubmit={this.formSubmit} />
+        <ImageGallery
+          imageName={searchName}
+          pageNumber={page}
+          onMore={this.handleMoreImage}
+        />
         <GlobalStyle />
       </Wrapper>
     );

@@ -1,14 +1,12 @@
 import { GalleryItem, Image } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 
-const ImageGalleryItem = ({ images }) => {
-  console.log(images);
-  return images.map(({ id, webformatURL, largeImageURL, tags }) => (
+const ImageGalleryItem = ({ images }) =>
+  images.map(({ id, webformatURL, largeImageURL, tags }) => (
     <GalleryItem key={id}>
       <Image src={webformatURL} alt={tags} />
     </GalleryItem>
   ));
-};
 export default ImageGalleryItem;
 
 ImageGalleryItem.propTypes = {

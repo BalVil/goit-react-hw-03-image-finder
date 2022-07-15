@@ -7,6 +7,7 @@ import {
   FormInput,
   IconBtn,
 } from './Searchbar.styled';
+import PropTypes from 'prop-types';
 
 export default class Searchbar extends Component {
   state = {
@@ -14,9 +15,9 @@ export default class Searchbar extends Component {
   };
 
   handleQueryChange = e => {
-    this.setState({ query: e.currentTarget.value.toLowerCase() });
-    if (this.state.query) {
-    }
+    const searchValueNormalized = e.currentTarget.value.toLowerCase();
+
+    this.setState({ query: searchValueNormalized });
   };
 
   handleSubmit = e => {
@@ -55,3 +56,5 @@ export default class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = { onSubmit: PropTypes.func.isRequired };

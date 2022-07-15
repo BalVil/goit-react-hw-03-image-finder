@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.li`
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@ export const Overlay = styled.li`
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
 `;
-export const ImageModal = styled.img`
+export const ImageModal = styled.div`
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
 `;

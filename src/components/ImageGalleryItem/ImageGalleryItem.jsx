@@ -5,11 +5,11 @@ export const ImageGalleryItem = ({
   smallSize,
   tags,
   largeSize,
-  onLargeImage,
+  onImageClick,
 }) => (
   <GalleryItem
     onClick={() =>
-      onLargeImage({
+      onImageClick({
         largeUrl: largeSize,
         alt: tags,
       })
@@ -23,5 +23,5 @@ ImageGalleryItem.propTypes = {
   tags: PropTypes.string.isRequired,
   smallSize: PropTypes.string.isRequired,
   largeSize: PropTypes.string.isRequired,
-  onLargeImage: PropTypes.func.isRequired,
+  onImageClick: PropTypes.func.isRequired,
 };

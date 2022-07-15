@@ -1,20 +1,27 @@
 import { GalleryItem, Image } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 
-const ImageGalleryItem = ({ images }) =>
-  images.map(({ id, webformatURL, largeImageURL, tags }) => (
-    <GalleryItem key={id}>
-      <Image src={webformatURL} alt={tags} />
-    </GalleryItem>
-  ));
-export default ImageGalleryItem;
+export const ImageGalleryItem = ({
+  smallSize,
+  tags,
+  largeSize,
+  onLargeImage,
+}) => (
+  <GalleryItem
+    onClick={() =>
+      onLargeImage({
+        largeUrl: largeSize,
+        alt: tags,
+      })
+    }
+  >
+    <Image src={smallSize} alt={tags} />
+  </GalleryItem>
+);
 
 ImageGalleryItem.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      webformatURL: PropTypes.string.isRequired,
-      largeImageURL: PropTypes.string.isRequired,
-    })
-  ),
+  tags: PropTypes.string.isRequired,
+  smallSize: PropTypes.string.isRequired,
+  largeSize: PropTypes.string.isRequired,
+  onLargeImage: PropTypes.func.isRequired,
 };

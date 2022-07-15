@@ -64,12 +64,14 @@ export const FormLabel = styled.span`
 export const FormInput = styled.input`
   display: inline-block;
   width: 100%;
+
+  padding-left: 8px;
+  padding-right: 4px;
+
   font: inherit;
   font-size: 20px;
   border: none;
   outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
 
   &::placeholder {
     font: inherit;

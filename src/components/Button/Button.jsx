@@ -1,13 +1,12 @@
 import { MoreBtn } from './Button.styled';
 import PropTypes from 'prop-types';
 
-const Button = ({ handleMoreImage }) => (
-  <MoreBtn onClick={handleMoreImage} type="submit">
+export const Button = ({ onClick }) => (
+  <MoreBtn onClick={onClick} type="submit">
     Load More
   </MoreBtn>
 );
-export default Button;
 
 Button.propTypes = {
-  handleMoreImage: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

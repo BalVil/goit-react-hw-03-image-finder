@@ -10,27 +10,29 @@ import {
 
 export default class Searchbar extends Component {
   state = {
-    searchName: '',
+    query: '',
   };
 
-  handleNameChange = e =>
-    this.setState({ searchName: e.currentTarget.value.toLowerCase() });
+  handleQueryChange = e => {
+    this.setState({ query: e.currentTarget.value.toLowerCase() });
+    if (this.state.query) {
+    }
+  };
 
   handleSubmit = e => {
-    const { searchName } = this.state;
+    const { query } = this.state;
     e.preventDefault();
 
-    if (searchName.trim() === '') {
-      // додати Notiflix чи react-toastify
-      return alert('Enter at least one pokemon');
+    if (query.trim() === '') {
+      return;
     }
 
-    this.props.onSubmit(searchName);
-    this.setState({ searchName: '' });
+    this.props.onSubmit(query);
+    this.setState({ query: '' });
   };
 
   render() {
-    const { searchName } = this.state;
+    const { query } = this.state;
 
     return (
       <Wrap>
@@ -40,8 +42,8 @@ export default class Searchbar extends Component {
             <FormLabel />
           </FormBtn>
           <FormInput
-            value={searchName}
-            onChange={this.handleNameChange}
+            value={query}
+            onChange={this.handleQueryChange}
             type="text"
             name="searchQuery"
             autoComplete="off"

@@ -1,8 +1,8 @@
 import { Gallery } from './ImageGallery.styled';
-import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ images, onImageClick }) => (
+export const ImageGallery = ({ images }) => (
   <Gallery>
     {images.map(({ id, webformatURL, largeImageURL, tags }) => (
       <ImageGalleryItem
@@ -10,7 +10,6 @@ export const ImageGallery = ({ images, onImageClick }) => (
         smallSize={webformatURL}
         tags={tags}
         largeSize={largeImageURL}
-        onImageClick={onImageClick}
       />
     ))}
   </Gallery>

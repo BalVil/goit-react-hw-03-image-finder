@@ -7,7 +7,6 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { Loader } from 'components/Loader/Loader';
 import { Button } from 'components/Button/Button';
-import Modal from 'components/Modal/Modal';
 import { Notification } from 'components/Notification/Notification';
 
 export default class App extends Component {
@@ -16,7 +15,6 @@ export default class App extends Component {
     searchQuery: '',
     page: 1,
     totalImages: null,
-    largeImage: null,
     loading: false,
     error: null,
   };
@@ -61,16 +59,8 @@ export default class App extends Component {
       page: page + 1,
     }));
 
-  handleModalImage = newlargeImage => {
-    this.setState({ largeImage: newlargeImage });
-  };
-
-  handleModalClose = () => {
-    this.setState({ largeImage: null });
-  };
-
   render() {
-    const { imageHits, largeImage, totalImages, loading, error } = this.state;
+    const { imageHits, totalImages, loading, error } = this.state;
 
     return (
       <Wrapper>
@@ -101,10 +91,6 @@ export default class App extends Component {
               </Notification>
             )}
           </>
-        )}
-
-        {largeImage && (
-          <Modal onModalImage={largeImage} onClose={this.handleModalClose} />
         )}
 
         <GlobalStyle />

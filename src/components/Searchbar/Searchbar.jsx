@@ -29,7 +29,7 @@ export default class Searchbar extends Component {
     }
 
     this.props.onSubmit(query);
-    this.setState({ query: '' });
+    // this.setState({ query: '' });
   };
 
   render() {

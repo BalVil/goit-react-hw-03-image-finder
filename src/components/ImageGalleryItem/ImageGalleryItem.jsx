@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { createPortal } from 'react-dom';
 import { GalleryItem, Image } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 import Modal from 'components/Modal/Modal';
@@ -21,9 +22,11 @@ export default class ImageGalleryItem extends Component {
           <Image src={smallSize} alt={tags} />
         </GalleryItem>
 
-        {isModalOpen && (
-          <Modal src={largeSize} alt={tags} onClose={this.closeModal} />
-        )}
+        {isModalOpen &&
+          createPortal(
+            <Modal src={largeSize} alt={tags} onClose={this.closeModal} />,
+            document.querySelector('#modal-root')
+          )}
       </>
     );
   }

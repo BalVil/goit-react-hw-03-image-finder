@@ -16,10 +16,10 @@ export default class App extends Component {
     page: 1,
     totalImages: null,
     loading: false,
-    error: null,
+    error: false,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     const prevQuery = prevState.searchQuery;
     const nextQuery = this.state.searchQuery;
     const prevPage = prevState.page;
@@ -54,7 +54,7 @@ export default class App extends Component {
     window.scrollTo({ top: 0, left: 0 });
   };
 
-  handleLoadMoreClick = () =>
+  handleLoadMore = () =>
     this.setState(({ page }) => ({
       page: page + 1,
     }));
@@ -68,10 +68,14 @@ export default class App extends Component {
 
         {loading && <Loader />}
 
-        {error && <div>{error.message}</div>}
+        {error && (
+          <Notification status="error">
+            Something went wrong. Try changing the query
+          </Notification>
+        )}
 
         {totalImages === 0 && !loading && (
-          <Notification>
+          <Notification status="warning">
             Sorry, there are no images matching your search query. Please change
             the request
           </Notification>
@@ -84,9 +88,9 @@ export default class App extends Component {
               onImageClick={this.handleModalImage}
             />
             {imageHits.length < totalImages ? (
-              <Button onClick={this.handleLoadMoreClick} />
+              <Button onClick={this.handleLoadMore} />
             ) : (
-              <Notification>
+              <Notification status="info">
                 We're sorry, but you've reached the end of search results
               </Notification>
             )}
